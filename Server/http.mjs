@@ -1,10 +1,9 @@
 import http from 'node:http'
 import { findAvailablePort } from './utils.mjs'
+import { processRequest } from './routing.mjs'
 
-const server = http.createServer((req, res) => {
-  console.log('request received: ',req.url)
-  res.end('Hello, World!')
-})
+
+const server = http.createServer(processRequest)
 
 findAvailablePort(3000).then(port => {
   server.listen(port, () => {
@@ -13,3 +12,4 @@ findAvailablePort(3000).then(port => {
 }).catch(err => {
   console.error('Error finding available port:', err)
 })
+
