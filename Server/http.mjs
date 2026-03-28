@@ -2,7 +2,7 @@ import http from 'node:http'
 import { findAvailablePort } from './utils.mjs'
 
 const server = http.createServer((req, res) => {
-  console.log('request received')
+  console.log('request received: ',req.url)
   res.end('Hello, World!')
 })
 
